@@ -61,7 +61,6 @@ public class Block extends Thread {
         try {
             while (alive) {
                 try {
-                    y = y + 1;
                     handler.sendEmptyMessage(MainActivity.BLOCK_GOING_DOWN);
                     Thread.sleep(1000);
                 } catch (Exception e) {

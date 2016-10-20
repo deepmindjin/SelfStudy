@@ -23,7 +23,6 @@ public class StageView extends View {
 
     Stage stage;
     Block controllingBlock;
-    int[][] currentBlock;
     Block nextBlock;
     Handler handler;
 
@@ -43,7 +42,7 @@ public class StageView extends View {
         unitWidth = stageWidth/WIDTH_COUNT;
         this.stageLevel = stageLevel;
         this.controllingBlock = controllingBlock;
-        currentBlock = controllingBlock.getCurrentBlock();
+//        currentBlock = controllingBlock.getCurrentBlock();
         this.handler = handler;
         stage = new Stage(stageLevel);
         originalMap = stage.getCurrentStageMap();
@@ -58,7 +57,7 @@ public class StageView extends View {
 
         // 1. If there is the controlling block, put it into the map
         if (controllingBlock!=null) {
-            collisionTest();
+//            collisionTest();
         }
 
         // 2. Put the valid map into the blockdrawer(which draws given map into the view)
@@ -73,49 +72,24 @@ public class StageView extends View {
         newBlockCome = false;
     }
 
-//    public boolean collisionTest(){
-//        int isNewBlock = 0;
-//        boolean collision = false;
-//        int before = 0;
-//        int after = 0;
-//
-//        for (int i=0;i<WIDTH_COUNT;i++){
-//            for(int j=0; j<HEIGHT_COUNT;j++){
-//                before = before + collisionSafeMap[j][i];
-//            }
-//        }
-//
-//        for (int i = controllingBlock.x; i < controllingBlock.x + 4; i++) {
-//            for (int j = controllingBlock.y; j < controllingBlock.y + 4; j++) {
-//                if (controllingBlock.getCurrentBlock()[j - controllingBlock.y][i - controllingBlock.x]!=0) {
-//                    collisionTestMap[j][i] = controllingBlock.getCurrentBlock()[j - controllingBlock.y][i - controllingBlock.x];
-//                    isNewBlock++;
-//                }
-//            }
-//        }
-//
-//        for (int i=0;i<WIDTH_COUNT;i++){
-//            for(int j=0; j<HEIGHT_COUNT;j++){
-//                after = after + collisionTestMap[j][i];
-//            }
-//        }
-//
-//        if (isNewBlock!=4){
-//            controllingBlock.alive = false;
-//            handler.sendEmptyMessage(MainActivity.NEW_BLOCK);
-//            newBlockCome = false;
-//        }else{
-//            collisionSafeMap = collisionTestMap;
-//        }
-//
-//        return true;
-//    }
-
     public boolean collisionTest(){
         boolean collision = false;
-        int difference = 0;a
+        int before = 0;
+        int after = 0;
 
-        for (int i = controllingBlock.x; i < controllingBlock.x + 4; i++) {
+        for(int i=0;i<WIDTH_COUNT;i++){
+            for (int j=0;j<HEIGHT_COUNT;j++){
+                if (collisionSafeMap[j][i]==0)
+                    before++;
+                for(int k=0;k<4;k++){
+                    if ((i==pastBlockPosition[0][k])&&(j==pastBlockPosition[1][k])){
+                        collisionTestMap[j][i] = 0;
+                    }
+                }
+            }
+        }
+
+        for(int i = controllingBlock.x; i < controllingBlock.x + 4; i++) {
             for (int j = controllingBlock.y; j < controllingBlock.y + 4; j++) {
                 if (controllingBlock.getCurrentBlock()[j - controllingBlock.y][i - controllingBlock.x]!=0) {
                     collisionTestMap[j][i] = controllingBlock.getCurrentBlock()[j - controllingBlock.y][i - controllingBlock.x];
@@ -125,23 +99,19 @@ public class StageView extends View {
 
         for(int i=0;i<WIDTH_COUNT;i++){
             for (int j=0;j<HEIGHT_COUNT;j++){
-
-                if (collisionSafeMap[j][i]!=collisionTestMap[j][i]){
-                    difference++;
+                if(collisionTestMap[j][i] == 0){
+                    after++;
                 }
             }
         }
 
-        if (difference==4){
-            newBlockCome = true;
+        if (after==before){
+            collisionSafeMap = collisionTestMap;
             return false;
+        }else{
+            handler.sendEmptyMessage(MainActivity.NEW_BLOCK);
+            collisionTestMap = collisionSafeMap;
         }
-
-        collisionSafeMap = collisionTestMap;
-
-
-
-
 
         return collision;
     }
@@ -159,31 +129,33 @@ public class StageView extends View {
         }
     }
 
+    public void openOldBlock(){
 
+    }
 
     public void moveRight(){
         saveCurrentBlockPosition();
-        controllingBlock.x += 1;
+        controllingBlock.x = controllingBlock.x+ 1;
         if (!collisionTest()){
-            controllingBlock.x -= 1;
+            controllingBlock.x = controllingBlock.x- 1;
         }
         handler.sendEmptyMessage(MainActivity.MOVE_BLOCK);
     }
 
     public void moveLeft(){
         saveCurrentBlockPosition();
-        controllingBlock.x -= 1;
+        controllingBlock.x = controllingBlock.x - 1;
         if (!collisionTest()){
-            controllingBlock.x += 1;
+            controllingBlock.x = controllingBlock.x + 1;
         }
         handler.sendEmptyMessage(MainActivity.MOVE_BLOCK);
     }
 
     public void moveDown(){
         saveCurrentBlockPosition();
-        controllingBlock.y += 1;
+        controllingBlock.y = controllingBlock.y + 1;
         if (!collisionTest()){
-            controllingBlock.y -= 1;
+            controllingBlock.y = controllingBlock.y - 1;
         }
         handler.sendEmptyMessage(MainActivity.MOVE_BLOCK);
     }
@@ -197,21 +169,4 @@ public class StageView extends View {
         handler.sendEmptyMessage(MainActivity.MOVE_BLOCK);
     }
 
-//    public boolean collisionCheck(){
-//        boolean result = false;
-//        for(int i=0 ;i < width ; i++){
-//            for(int j=0;j < height ; j++){
-//                // 현재 블럭의 셀의 값을 가져온다
-//                int cBlockValue = block[j][i];
-//                if( cBlockValue > 0){ // 현재 블럭 셀의 값이 0보다 클경우만 충돌체크를 한다
-//                    // 이동한곳의 stage 셀값과 block 의 셀값을 더한다
-//                    int sum = cBlockValue + Stage.stageMap[y+j][x+i];
-//                    if(sum > cBlockValue){ // 두개 셀을 더한값이 블럭셀의 값보다 크면 충돌
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
-//        return result;
-//    }
 }

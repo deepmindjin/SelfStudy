@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case BLOCK_GOING_DOWN:
+                    stageView.moveDown();
                     stageView.postInvalidate();
                     break;
                 case NEW_BLOCK:
