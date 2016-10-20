@@ -3,14 +3,15 @@ package com.hongseokandrewjang.android.criminalintent;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
 public class CrimeLab {
     private static CrimeLab crimeLab;
-    private ArrayList<Crime> crimes;
+    private List<Crime> crimes;
 
-    public  static CrimeLab get(Context context){
+    public static CrimeLab get(Context context){
         if(crimeLab == null)
             crimeLab = new CrimeLab(context);
         return crimeLab;
@@ -26,7 +27,7 @@ public class CrimeLab {
         }
     }
 
-    public ArrayList<Crime> getCrimes(){
+    public List<Crime> getCrimes(){
         return crimes;
     }
 

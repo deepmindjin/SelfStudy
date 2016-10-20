@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Background Colors -->
+    <color name="background">#1e1f25</color>
+    <color name="border">#515151</color>
+
+    <!-- Block Colors -->
+    <color name="block_I">#cb000a</color>
+    <color name="block_J">#b5b33f</color>
+    <color name="block_L">#b53f78</color>
+    <color name="block_O">#6273d2</color>
+    <color name="block_S">#707070</color>
+    <color name="block_Z">#0800ff</color>
+    <color name="block_T">#01931e</color>
+
+    <!-- Text Colors -->
+    <color name="textTitle">#3F51B5</color>
+    <color name="textContents">#3F51B5</color>
+</resources>

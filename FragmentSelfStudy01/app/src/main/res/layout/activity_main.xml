@@ -10,8 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hongseokandrewjang.android.fragmentselfstudy01.MainActivity">
 
-    <TextView
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:name="com.hongseokandrewjang.android.fragmentselfstudy01.ListFragment"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/fragment"
+        tools:layout="@layout/fragment_list" />
 </RelativeLayout>

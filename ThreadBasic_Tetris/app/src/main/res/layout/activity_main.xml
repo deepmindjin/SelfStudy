@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hongseokandrewjang.android.threadbasic_tetris.MainActivity">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTurn"
+        android:text="TURN"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/ground"
+        android:layout_toRightOf="@+id/ground" />
+
+    <FrameLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/ground"
+        android:layout_above="@+id/btnRight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/btnStart"
+        android:layout_toStartOf="@+id/btnStart">
+
+    </FrameLayout>
+
+    <Button
+        android:text="←"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLeft"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="↓"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDown"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnLeft"
+        android:layout_toEndOf="@+id/btnLeft" />
+
+    <Button
+        android:text="→"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRight"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnDown"
+        android:layout_toEndOf="@+id/btnDown" />
+
+    <TextView
+        android:text="250"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/showPoint"
+        android:layout_below="@+id/showStage"
+        android:layout_toRightOf="@+id/ground"
+        android:layout_toEndOf="@+id/ground"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:text="STAGE : 1"
+        android:layout_height="wrap_content"
+        android:id="@+id/showStage"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ground"
+        android:layout_toEndOf="@+id/ground" />
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/preview"
+        android:layout_above="@+id/showStage"
+        android:layout_toRightOf="@+id/ground"
+        android:layout_toEndOf="@+id/ground">
+
+        <TextView
+            android:text="NEXT"
+            android:layout_height="wrap_content"
+            android:id="@+id/showNext"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_toRightOf="@+id/ground"
+            android:layout_toEndOf="@+id/ground" />
+    </FrameLayout>
+
+    <Button
+        android:text="START"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStart"
+        android:layout_above="@+id/preview"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="42dp" />
+
+</RelativeLayout>
