@@ -16,7 +16,7 @@
 	RecyclerViewExcercise01		RecyclerView를 스스로 만들어 보았습니다.
 	SQLiteBasic_Bbs				수업에서 배운 SQLite을 사용하는 앱을 스스로 만들어 보았습니다.
 	ShootTheBalloon				Animation을 활용해 Androboy를 움직이고 총알을 쏘는 게임을 만들어 보았습니다.
-	Tetris					Thread를 활용한 Tetris게임을 만들어 보았습니다
+	Tetris						Thread를 활용한 Tetris게임을 만들어 보았습니다
 	ThreadExcercise01			수업에서 배운 Thread를 스스로 활용하여 보았습니다.
 	ViewBasic_Custom			CustomView를 생성하여 클릭하면 빨간 원이 그려지는 앱을 만들어 보았습니다.
 	SaChunSung 					Animation을 배운 뒤, Animation을 활용하여 기본적인 사천성 게임을 만들어 보았습니다.
