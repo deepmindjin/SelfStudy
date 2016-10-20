@@ -13,7 +13,7 @@
 	ListExcercise02 			수업에서 배운 ListView를 스스로 2번 째 만들어 보았습니다.
 	ListExcercise03 			수업에서 배운 ListView를 스스로 3번 째 만들어 보았습니다.
 	ListExcercise04 			수업에서 배운 ListView를 스스로 4번 째 만들어 보았습니다.
-	RecyclerViewExcerCise01				RecyclerView를 스스로 만들어 보았습니다.
+	RecyclerViewExcercise01			RecyclerView를 스스로 만들어 보았습니다.
 	SaChunSung 					Animation을 배운 뒤, Animation을 활용하여 기본적인 사천성 게임을 만들어 보았습니다.
 	ShootTheBalloon				Animation을 활용해 Androboy를 움직이고 총알을 쏘는 게임을 만들어 보았습니다.
 	SQLiteBasic_Bbs				수업에서 배운 SQLite을 사용하는 앱을 스스로 만들어 보았습니다.
