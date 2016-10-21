@@ -9,7 +9,7 @@
 	FragmentSelfStudy01 		수업에서 배운 Fragment을 스스로 복습해 보았습니다.
 	GeoQuiz 					퀴즈를 내고 맞추는 문제입니다.
 	GeoQuiz2 					GeoQuiz를 다시한번 만들어 보았습니다.
-	GetSeoulRealEstatePrice		서울 공공 API를 통하여 사용자가 지정한 연도와 구의 평균 지대를 알려주는 앱입니다.
+	GetSeoulRealEstatePrice		서울시 OPEN API를 통하여 사용자가 지정한 연도와 구의 평균 집값을 알려주는 앱입니다.
 	ListExcercise01 			수업에서 배운 ListView를 스스로 1번 째 만들어 보았습니다.
 	ListExcercise02 			수업에서 배운 ListView를 스스로 2번 째 만들어 보았습니다.
 	ListExcercise03 			수업에서 배운 ListView를 스스로 3번 째 만들어 보았습니다.
