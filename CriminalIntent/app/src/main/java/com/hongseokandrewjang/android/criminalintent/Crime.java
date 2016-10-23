@@ -8,42 +8,42 @@ import java.util.UUID;
  */
 public class Crime {
 
-    private UUID id;
-    private String title;
-    private Date date;
-    private boolean solved;
+    private UUID mId;
+    private String mTitle;
+    private Date mDate;
+    private boolean mSolved;
 
     public Crime(){
-        id = UUID.randomUUID();
-        date = new Date();
+        mId = UUID.randomUUID();
+        mDate = new Date();
     }
 
     public UUID getId() {
-        return id;
+        return mId;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.mTitle = title;
     }
 
     public Date getDate() {
-        return date;
+        return mDate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.mDate = date;
     }
 
     public boolean isSolved() {
-        return solved;
+        return mSolved;
     }
 
     public void setSolved(boolean solved) {
-        this.solved = solved;
+        this.mSolved = solved;
     }
 }
 
