@@ -1,6 +1,7 @@
 package com.hongseokandrewjang.android.getseoulrealestateprice;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinnerYear;
     Spinner spinnerSigungu;
     Button btnCallData;
+    Button btnSeeMap;
 
     TextView showRegion;
     TextView showAverage;
 
-
+    public final static int MAP_REQUEST_CODE = 1;
     private final static String[] SIGUNGU = {
             "종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "노원구", "은평구", "서대문구","마포구","양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강도구"};
     private final static Integer[] YEARS = {2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016};
@@ -43,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 int selectedYear = Integer.parseInt(spinnerYear.getItemAtPosition(spinnerYear.getSelectedItemPosition()).toString());
                 String selectedGu = spinnerSigungu.getItemAtPosition(spinnerSigungu.getSelectedItemPosition()).toString();
                 getData(selectedYear,selectedGu);
+            }
+        });
+        btnSeeMap = (Button)findViewById(R.id.btnSeeMap);
+        btnSeeMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NaverMap.class);
+                startActivityForResult(intent,MAP_REQUEST_CODE);
             }
         });
 
@@ -103,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         sum = sum+Integer.parseInt(JIGA);
                         Log.i("JIGA","지가는 = "+JIGA);
                     }
+
                     showRegion.setText(sigungu+"의 평균 지가는");
                     showAverage.setText(sum/100+"원 입니다");
                     progress.dismiss();
