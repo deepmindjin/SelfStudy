@@ -1,4 +1,4 @@
-package com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing.domain;
+package com.hongseokandrewjang.android.banthing;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -23,7 +23,7 @@ public class DataUtil {
             // 1. db를 연결한다
             db = openDatabase(context, DB_NAME);
             // 2. 쿼리를 만든다
-            String query = "update bbs set image = '"+image
+            String query = "update bbs set mainMenuImage = '"+image
                     +" where name = "+name;
             // 3. 쿼리를 실행한다
             db.execSQL(query);

@@ -1,5 +1,6 @@
 package com.hongseokandrewjang.android.banthing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -9,9 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing.domain.ChickenStore;
-import com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing.domain.ChickenStoreDataSetting;
 
 import java.util.ArrayList;
 
@@ -58,20 +56,23 @@ class MainListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 //        final View view = convertView;
-        ChickenStore store = stores.get(position);
+        final ChickenStore store = stores.get(position);
         if(convertView == null) {
             convertView = inflater.inflate(R.layout.main_list_item, null);
         }
-//        RelativeLayout item_layout = (RelativeLayout)convertView.findViewById(R.id.list_item_view);
-//        item_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(view.getContext(), StoreDetail.class);
-//                intent.getAction();
-//            }
-//        });
+        final View finalConvertView = convertView;
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(finalConvertView.getContext(), StoreDetail.class);
+                intent.putExtra(StoreDetail.STORE_DETAIL, store);
+                finalConvertView.getContext().startActivity(intent);
+//                startActivity(intent);
+            }
+        });
         ImageView image = (ImageView)convertView.findViewById(R.id.image_on_main_list);
         image.setImageResource(R.drawable.chicken4);
         TextView name = (TextView)convertView.findViewById(R.id.chickenStoreName);
@@ -81,5 +82,6 @@ class MainListAdapter extends BaseAdapter{
         TextView deliveryFee = (TextView)convertView.findViewById(R.id.chickenStoreDeliveryFee);
         deliveryFee.setText("배달팁 : "+store.deliveryFee+"원");
         return convertView;
+
     }
 }

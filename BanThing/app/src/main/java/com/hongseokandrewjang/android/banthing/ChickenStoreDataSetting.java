@@ -1,4 +1,4 @@
-package com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing.domain;
+package com.hongseokandrewjang.android.banthing;
 
 import android.content.Context;
 import android.util.Log;
@@ -18,8 +18,8 @@ public class ChickenStoreDataSetting {
         init();
         stores = DataUtil.selectAll(context, DataUtil.selectCount(context));
         for(ChickenStore store : stores){
-            store.image = context.getResources().getIdentifier("chicken1.jpg", "drawable", "com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing");
-            Log.i("image","이미지의 주소는 : "+store.image);
+            store.mainMenuImage = context.getResources().getIdentifier("chicken1.jpg", "drawable", "com.hongseokandrewjang.android.banthing.com.hongseokandrewjang.android.banthing");
+            Log.i("image","이미지의 주소는 : "+store.mainMenuImage);
         }
         return stores;
     }
