@@ -106,18 +106,18 @@ public class DataUtil {
             cursor = db.rawQuery(query,null);
             // 4. 반복문을 통해 값을 datas에 담아준다
             while (cursor.moveToNext()){
-                ChickenStore data = new ChickenStore();
-                int index = cursor.getColumnIndex("no");
-                data.no = cursor.getInt(index);
-                index = cursor.getColumnIndex("name");
-                data.name = cursor.getString(index);
-                index = cursor.getColumnIndex("branch");
-                data.branch = cursor.getString(index);
-                index = cursor.getColumnIndex("minPrice");
-                data.minPrice = cursor.getInt(index);
-                index = cursor.getColumnIndex("deliveryFee");
-                data.deliveryFee = cursor.getInt(index);
-                datas.add(data);
+//                ChickenStore data = new ChickenStore();
+//                int index = cursor.getColumnIndex("no");
+//                data.no = cursor.getInt(index);
+//                index = cursor.getColumnIndex("name");
+//                data.name = cursor.getString(index);
+//                index = cursor.getColumnIndex("branch");
+//                data.branch = cursor.getString(index);
+//                index = cursor.getColumnIndex("minPrice");
+//                data.minPrice = cursor.getInt(index);
+//                index = cursor.getColumnIndex("deliveryFee");
+//                data.deliveryFee = cursor.getInt(index);
+//                datas.add(data);
             }
         }catch (Exception e) {
             e.printStackTrace();

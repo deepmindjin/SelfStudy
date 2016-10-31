@@ -76,12 +76,11 @@ class MainListAdapter extends BaseAdapter{
         ImageView image = (ImageView)convertView.findViewById(R.id.image_on_main_list);
         image.setImageResource(R.drawable.chicken4);
         TextView name = (TextView)convertView.findViewById(R.id.chickenStoreName);
-        name.setText(store.name +" "+store.branch);
+        name.setText(store.getNAME() +" "+store.getBRANCH());
         TextView minPrice = (TextView)convertView.findViewById(R.id.chickenStoreMinPrice);
-        minPrice.setText("가격 : "+store.minPrice+"원 ~");
+        minPrice.setText("가격 : "+store.getMENU().get(0).getMENU_PRICE()+"원 ~");
         TextView deliveryFee = (TextView)convertView.findViewById(R.id.chickenStoreDeliveryFee);
-        deliveryFee.setText("배달팁 : "+store.deliveryFee+"원");
+        deliveryFee.setText("배달팁 : "+store.getDELIVERY_FEE()+"원");
         return convertView;
-
     }
 }

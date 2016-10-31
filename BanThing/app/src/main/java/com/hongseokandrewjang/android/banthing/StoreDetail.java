@@ -64,9 +64,9 @@ public class StoreDetail extends AppCompatActivity {
             TextView menu_name = (TextView)convertView.findViewById(R.id.store_detail_menu_name);
             ImageView menu_image = (ImageView)convertView.findViewById(R.id.store_detail_menu_picture);
 
-            menu_price.setText(menu.price);
-            menu_name.setText(menu.name);
-            menu_image.setImageResource(menu.menuImage);
+            menu_price.setText(menu.getMENU_PRICE()+"");
+            menu_name.setText(menu.getMENU_NAME());
+//            menu_image.setImageResource(menu.menuImage);
 
             return convertView;
         }

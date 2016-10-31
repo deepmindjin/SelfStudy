@@ -1,24 +1,51 @@
 package com.hongseokandrewjang.android.banthing;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by HongSeokAndrewJang on 2016-10-13.
- */
 
 public class ChickenStore implements Serializable{
-    public int no;
-    public String name;
-    public String branch;
-    public int minPrice;
-    public int deliveryFee;
-    public int mainMenuImage;
-    public ArrayList<Menu> menus;
 
-    public class Menu{
-        public String name;
-        public int price;
-        public int menuImage;
+    public ChickenStore(){
+    }
+    private String BRANCH;
+    private Long DELIVERY_FEE;
+    private List<Menu> MENU;
+    private String NAME;
+
+    public String getBRANCH() {
+        return BRANCH;
+    }
+
+    public Long getDELIVERY_FEE() {
+        return DELIVERY_FEE;
+    }
+
+    public List<Menu> getMENU() {
+        return MENU;
+    }
+
+    public String getNAME() {
+        return NAME;
+    }
+
+    public static class Menu{
+        public Menu() {
+        }
+        private String MENU_IMAGE;
+        private String MENU_NAME;
+        private Long MENU_PRICE;
+
+        public Long getMENU_PRICE() {
+            return MENU_PRICE;
+        }
+
+        public String getMENU_IMAGE() {
+            return MENU_IMAGE;
+        }
+
+        public String getMENU_NAME() {
+            return MENU_NAME;
+        }
     }
 }

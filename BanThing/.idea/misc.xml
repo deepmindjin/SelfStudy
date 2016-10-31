@@ -140,4 +140,7 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\장홍석\AppData\Roaming\Subversion</configuration>
+  </component>
 </project>
