@@ -1,86 +1,85 @@
 package com.hongseokandrewjang.android.banthing;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  OnFragmentInteractionListener{
 
-    ArrayList<ChickenStore> stores = new ArrayList<>();
-    ListView listView;
+    private static ArrayList<ChickenStore> mChickenStores = new ArrayList<>();
+
+
+    private FragmentManager manager;
+
+    MainListFragment mMainListFragment;
+    StoreDetailFragment mStoreDetailFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        ChickenStoreDataSetting setting = new ChickenStoreDataSetting(this);
-        stores = setting.getData(this);
-
-        listView = (ListView)findViewById(R.id.listView_On_Main);
-        MainListAdapter adapter = new MainListAdapter(this.getLayoutInflater(), stores);
-        listView.setAdapter(adapter);
-    }
-}
-
-class MainListAdapter extends BaseAdapter{
-    ArrayList<ChickenStore> stores = new ArrayList<>();
-    LayoutInflater inflater;
-
-    MainListAdapter(LayoutInflater inflater, ArrayList<ChickenStore> stores){
-        this.inflater = inflater;
-        this.stores = stores;
-    }
-
-    @Override
-    public int getCount() {
-        return stores.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return stores.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-//        final View view = convertView;
-        final ChickenStore store = stores.get(position);
-        if(convertView == null) {
-            convertView = inflater.inflate(R.layout.main_list_item, null);
+        // Handle fragment stack exception
+        manager = getSupportFragmentManager();
+        int stackCount = manager.getBackStackEntryCount();
+        if(stackCount > 0) {
+            manager.popBackStack();
         }
-        final View finalConvertView = convertView;
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(finalConvertView.getContext(), StoreDetail.class);
-                intent.putExtra(StoreDetail.STORE_DETAIL, store);
-                finalConvertView.getContext().startActivity(intent);
-//                startActivity(intent);
-            }
-        });
-        ImageView image = (ImageView)convertView.findViewById(R.id.image_on_main_list);
-        image.setImageResource(R.drawable.chicken4);
-        TextView name = (TextView)convertView.findViewById(R.id.chickenStoreName);
-        name.setText(store.getNAME() +" "+store.getBRANCH());
-        TextView minPrice = (TextView)convertView.findViewById(R.id.chickenStoreMinPrice);
-        minPrice.setText("가격 : "+store.getMENU().get(0).getMENU_PRICE()+"원 ~");
-        TextView deliveryFee = (TextView)convertView.findViewById(R.id.chickenStoreDeliveryFee);
-        deliveryFee.setText("배달팁 : "+store.getDELIVERY_FEE()+"원");
-        return convertView;
+        setContentView(R.layout.activity_main);
+        setChickenStoreDataToList();
+        mMainListFragment = new MainListFragment();
+        mStoreDetailFragment = new StoreDetailFragment();
+        setFragment();
+    }
+
+    private void setChickenStoreDataToList(){
+        mChickenStores = (ArrayList<ChickenStore>)getIntent().getSerializableExtra(Login.CHICKEN_STORE_DATA);
+    }
+
+    private void setFragment(){
+        manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragment_ground_in_main, mMainListFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void goList(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_ground_in_main, mMainListFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void goDetail(int position){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_ground_in_main, mStoreDetailFragment)
+                .addToBackStack(null)
+                .commit();
+        mStoreDetailFragment.setChickenStore(position);
+    }
+
+    @Override
+    public void onFragmentInteraction(String str,int position) {
+        if (str.equals(MainListFragment.TAG)){
+            goDetail(position);
+        }else if(str.equals(StoreDetailFragment.TAG)){
+            goList();
+        }
+    }
+
+    public static ArrayList<ChickenStore> getChickenStores() {
+        return mChickenStores;
+    }
+
+    public static ChickenStore getStore(int position){
+        return mChickenStores.get(position);
     }
 }
+

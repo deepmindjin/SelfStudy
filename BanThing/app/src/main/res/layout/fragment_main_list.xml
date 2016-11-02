@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.hongseokandrewjang.android.banthing.Login">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_in_Main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/show_current_position"/>
+
+    <RelativeLayout
+        android:background="@color/Main"
+        android:id="@+id/show_current_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_margin="@dimen/text_margin"
+            android:textColor="#FFFFFF"
+            android:text="현재 주소 : 서울시 강남구 신사동"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        <Button
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_width="30dp"
+            android:id="@+id/btnChangePosition"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@mipmap/ic_place_white_18dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

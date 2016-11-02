@@ -2,7 +2,6 @@ package com.hongseokandrewjang.android.banthing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -13,63 +12,51 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference storesInDatabase;
+    DatabaseReference storeRef;
 
-    private final String TAG = "LOGIN - GET FIRST DATA";
+    private final String TAG = "LOGIN";
+    public static final String CHICKEN_STORE_DATA = "Get data from firebase";
 
     private final String DATABASE_ADDRESS = "https://banthing-4382c.firebaseio.com/";
     private final String STORAGE_ADDRESS = "gs://banthing-4382c.appspot.com chevron_right/images";
-    ArrayList<Map<String, ChickenStore>> mChickenStores = new ArrayList<>();
+
+    public static ArrayList<ChickenStore> sChickenStores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Log.i(TAG,"시작됨");
         startFirebase();
-        goToMainPage();
     }
 
     private void startFirebase() {
         firebaseDatabase = FirebaseDatabase.getInstance();
-        storesInDatabase = firebaseDatabase.getReference("CHICKENSTORE");
-        Log.i(TAG,"열었음");
-        storesInDatabase.addValueEventListener(new ValueEventListener() {
+        storeRef = firebaseDatabase.getReference("CHICKENSTORE");
+        Log.e(TAG,"Database 열었음");
+        storeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot stores) {
                 for(DataSnapshot store : stores.getChildren()){
-                    String storeId = store.getKey();
-                    HashMap<String, ChickenStore> data = new HashMap<String, ChickenStore>();
                     ChickenStore chickenStore = store.getValue(ChickenStore.class);
-                    data.put(storeId,chickenStore);
-                    mChickenStores.add(data);
-                    Log.i(TAG,data.toString());
+                    sChickenStores.add(chickenStore);
                 }
+                goToMainPage();
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         });
-
     }
 
-    private void goToMainPage(){
-        Runnable goToMainAfter5sec = new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Login.this, MainActivity.class);
-            }
-        };
-        Handler handler = new Handler();
-        handler.postDelayed(goToMainAfter5sec, 3000);
+    private void goToMainPage() {
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        intent.putExtra(CHICKEN_STORE_DATA,sChickenStores);
+        startActivity(intent);
+        finish();
     }
 }

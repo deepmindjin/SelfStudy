@@ -19,13 +19,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/store_deatil_Logo"/>
 
-    <GridView
-        android:id="@+id/store_detail_grid_view"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:outlineProvider="bounds"
-        android:numColumns="2"
-        android:layout_below="@+id/store_deatil_Logo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
