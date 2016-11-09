@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "6288230543",
+    "firebase_url": "https://jikbang-cbf2a.firebaseio.com",
+    "project_id": "jikbang-cbf2a",
+    "storage_bucket": "jikbang-cbf2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6288230543:android:00864cc9e865c46d",
+        "android_client_info": {
+          "package_name": "chat.android.fastcampus.co.kr.jikbang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6288230543-ot7gg9h31bjgd5kcgfsse2ltpujjanul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDncD_9gYDZgeV-DRr2qOEGtUTQ2cs0CdY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
