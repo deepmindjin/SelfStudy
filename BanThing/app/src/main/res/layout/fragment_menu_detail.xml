@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@color/Main"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        layout_height="match_parent"
+        layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar_in_menu_detail">
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/menu_detail_descriptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_in_menu_detail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@mipmap/chicken6"
+            android:id="@+id/menu_detail_image"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="160dp" />
+
+        <TextView
+            android:text="이름이름"
+            android:background="@drawable/border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_detail_name"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_below="@+id/menu_detail_image"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:layout_below="@+id/addons"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="#FFFFFF"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/menu_detail_show_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="TOTAL" />
+
+            <TextView
+                android:id="@+id/menu_detail_total_price"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="total"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:padding="10dp"
+            android:text="가격"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvshow_price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_below="@+id/menu_detail_name"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:padding="10dp"
+            android:gravity="end"
+            android:text="치킨 반마리 가격"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_detail_price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_below="@+id/menu_detail_name"
+            android:layout_toRightOf="@id/tvshow_price"
+            android:layout_alignParentRight="true"/>
+
+        <RelativeLayout
+            android:id="@+id/addons"
+            android:background="@drawable/border"
+            android:layout_below="@id/tvshow_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="10dp"
+                android:text="추가메뉴"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menu_detail_showOptions" />
+
+            <LinearLayout
+                android:layout_below="@+id/menu_detail_showOptions"
+                android:orientation="horizontal"
+                android:id="@+id/add_beer_check_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="생맥주 500mL"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <CheckedTextView
+
+                    android:layout_gravity="right"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addon_beer"
+                    android:hint="+4000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/add_beer_check_linear"
+                android:orientation="horizontal"
+                android:id="@+id/addon_Big_Coke_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="콜라 1.5L"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <CheckedTextView
+                    android:layout_gravity="right"
+                    android:id="@+id/addon_Big_Coke"
+                    android:focusableInTouchMode="true"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="+1500" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menu_detail_descriptions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="뒤로ㄱㄱ"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/menu_detail_btnGoBack"
+            android:layout_weight="1"
+            android:background="@drawable/btn_go_store_detail" />
+
+        <Button
+            android:text="결제ㄱㄱ"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/menu_detail_btnGoToPurchase"
+            android:layout_weight="1"
+            android:background="@drawable/btn_go_buy" />
+    </LinearLayout>
+
+</RelativeLayout>

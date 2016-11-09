@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/activity_login"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.hongseokandrewjang.android.banthing.Login">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hongseokandrewjang.android.banthing.Loading">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_in_Main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/show_current_position"/>
+        android:layout_below="@+id/show_current_position"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <RelativeLayout
         android:background="@color/Main"
         android:id="@+id/show_current_position"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar_in_list"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -32,6 +35,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:elevation="1dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <Button
@@ -44,5 +48,15 @@
             android:background="@mipmap/ic_place_white_18dp"
             android:layout_height="30dp"/>
     </RelativeLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_in_list"
+        android:background="@color/Main"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>
