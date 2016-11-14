@@ -14,10 +14,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
-    static final int FRAGMENT_COUNT = 4;
+    static final int FRAGMENT_COUNT = 3;
     HomeFragment home;
     MapFragment map;
-    PostFragment etc;
+    PostFragment post;
     Fragment settings;
 
     ViewPager pager;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         home = new HomeFragment();
         map = new MapFragment();
-        etc = new PostFragment();
+        post = new PostFragment();
 
         TabLayout tab = (TabLayout) findViewById(R.id.tab);
         tab.addTab(tab.newTab().setText("Home"));
@@ -83,8 +83,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             switch(position){
                 case 0: fragment = home; break;
                 case 1: fragment = map; break;
-                case 2: fragment = etc; break;
-                case 3: fragment = settings; break;
+                case 2: fragment = post; break;
             }
             return fragment;
         }
