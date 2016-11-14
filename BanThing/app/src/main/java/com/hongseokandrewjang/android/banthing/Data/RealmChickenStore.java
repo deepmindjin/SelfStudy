@@ -1,24 +1,24 @@
 package com.hongseokandrewjang.android.banthing.Data;
 
-import java.util.ArrayList;
-
+import io.realm.RealmList;
 import io.realm.RealmModel;
+import io.realm.RealmObject;
 
 /**
  * Created by HongSeok on 2016-11-08.
  */
 
-public class RealmChickenStore  implements RealmModel{
+public class RealmChickenStore  extends RealmObject implements RealmModel{
 
-    private ArrayList<RealmMENU> MENU;
+    private RealmList<RealmMENU> MENU;
 
     private String NAME;
 
-    public ArrayList<RealmMENU> getMENU() {
+    public RealmList<RealmMENU> getMENU() {
         return MENU;
     }
 
-    public void setMENU(ArrayList<RealmMENU> MENU) {
+    public void setMENU(RealmList<RealmMENU> MENU) {
         this.MENU = MENU;
     }
 

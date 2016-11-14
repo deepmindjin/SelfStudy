@@ -40,8 +40,4 @@ public class MENU implements Serializable {
         this.MENU_IMAGE = MENU_IMAGE;
     }
 
-    @Override
-    public String toString() {
-        return "[MENU_NAME = " + MENU_NAME + ", MENU_PRICE = " + MENU_PRICE + ", MENU_IMAGE = " + MENU_IMAGE + "]";
-    }
 }

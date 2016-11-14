@@ -16,4 +16,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/toolbar_in_purchase" />
+
+    <TextView
+        android:text="Purchase Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/test_on_purchase"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 </RelativeLayout>

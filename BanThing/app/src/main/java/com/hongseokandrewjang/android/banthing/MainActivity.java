@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.hongseokandrewjang.android.banthing.AnimationClasses.BackTwiceForEndApp.BackTwice;
 import com.hongseokandrewjang.android.banthing.Data.ChickenStore;
 import com.hongseokandrewjang.android.banthing.Fragments.MainListFragment;
@@ -16,8 +14,6 @@ import com.hongseokandrewjang.android.banthing.Fragments.StoreDetailFragment;
 
 import java.util.ArrayList;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 public class MainActivity extends AppCompatActivity implements  OnFragmentInteractionListener{
 
     private static ArrayList<ChickenStore> mChickenStores = new ArrayList<>();
@@ -25,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements  OnFragmentIntera
     private Boolean checkFromMenu = false;
     private boolean signedIn = false;
 
-    // Need twice to end application
+    // Need back button twice to end application
     private BackTwice backPressCloseHandler;
 
     private FragmentManager manager;
@@ -39,8 +35,6 @@ public class MainActivity extends AppCompatActivity implements  OnFragmentIntera
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Get
 
         // Handle fragment stack exception
         manager = getSupportFragmentManager();
@@ -125,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements  OnFragmentIntera
     public void onFragmentInteraction(String str,int position) {
         if (str.equals(StoreDetailFragment.TAG)){
             Log.e("goDetail","position : "+position);
+            currentStorePosition = position;
             goDetail(currentStorePosition);
         }else if(str.equals(MainListFragment.TAG)){
             if (checkFromMenu){
@@ -152,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements  OnFragmentIntera
         backPressCloseHandler.onBackPressed();
     }
 
+
     // Getter Section Below
     public static ArrayList<ChickenStore> getChickenStores() {
         return mChickenStores;
@@ -163,10 +159,6 @@ public class MainActivity extends AppCompatActivity implements  OnFragmentIntera
 
     public static int getStorePosition(){
         return currentStorePosition;
-    }
-
-    public static void setStorePosition(int position){
-        currentStorePosition = position;
     }
 
 }

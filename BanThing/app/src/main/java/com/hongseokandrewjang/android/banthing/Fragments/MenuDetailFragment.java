@@ -1,5 +1,6 @@
 package com.hongseokandrewjang.android.banthing.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,10 +18,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hongseokandrewjang.android.banthing.Data.ChickenStore;
 import com.hongseokandrewjang.android.banthing.Data.MENU;
-import com.hongseokandrewjang.android.banthing.SignIn;
 import com.hongseokandrewjang.android.banthing.MainActivity;
 import com.hongseokandrewjang.android.banthing.OnFragmentInteractionListener;
 import com.hongseokandrewjang.android.banthing.R;
+import com.hongseokandrewjang.android.banthing.SignIn;
 
 /**
  * Created by HongSeok on 2016-11-07.
@@ -33,6 +34,7 @@ public class MenuDetailFragment extends Fragment{
     private OnFragmentInteractionListener mListener;
 
     public static final String TAG = "MenuDetailFragment";
+    public static final String TOTAL_PRICE = "TOTAL_PRICE";
     private Toolbar toolbar;
     private ImageView menu_image;
     private TextView menu_name, menu_price, show_total_price;
@@ -45,7 +47,7 @@ public class MenuDetailFragment extends Fragment{
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mListener = (OnFragmentInteractionListener)getActivity();
         View view = inflater.inflate(R.layout.fragment_menu_detail, container, false);
         // Find  which menu to show
@@ -96,13 +98,16 @@ public class MenuDetailFragment extends Fragment{
         btnGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goBack(v);
+                mListener.onFragmentInteraction(StoreDetailFragment.TAG, MainActivity.getStorePosition());
             }
         });
         btnGoToPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SignIn.goToSignIn(getActivity());
+                Intent intent = SignIn.goToSignIn(getActivity());
+                intent.putExtra(TOTAL_PRICE,totalPrice);
+                getActivity().startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.layout_leftin,R.anim.layout_leftout);
             }
         });
 
